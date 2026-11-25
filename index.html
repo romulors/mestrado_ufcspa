@@ -17,19 +17,9 @@
   header img { height: 56px; background: #fff; padding: 6px 10px; border-radius: 6px; }
   h1 { font-size: 1.7rem; line-height: 1.25; margin: 1rem 0 .5rem; }
   h2 { font-size: 1.25rem; margin: 2.5rem 0 .75rem; padding-bottom: .3rem; border-bottom: 1px solid var(--line); }
-  h3 { font-size: 1.05rem; margin: 1.5rem 0 .4rem; }
   .meta { color: var(--muted); margin: 0; }
   a { color: var(--accent); }
-  nav { margin-top: 1.25rem; display: flex; flex-wrap: wrap; gap: .4rem 1rem; font-size: .95rem; }
-  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 1rem; }
-  .card { border: 1px solid var(--line); border-radius: 8px; padding: 1rem 1.1rem; background: var(--soft); }
-  .card p { margin: .3rem 0; }
-  .big { font-size: 1.6rem; font-weight: 600; }
-  table { width: 100%; border-collapse: collapse; font-size: .95rem; }
-  th, td { text-align: left; padding: .45rem .5rem; border-bottom: 1px solid var(--line); vertical-align: top; }
-  th { color: var(--muted); font-weight: 600; }
   ol.refs li { margin-bottom: .6rem; }
-  .tag { display: inline-block; font-size: .8rem; padding: 0 .45rem; border-radius: 4px; background: var(--line); color: var(--fg); }
   footer { max-width: 52rem; margin: 3rem auto 2rem; padding: 1rem 1.25rem 0; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
 </style>
 </head>
@@ -40,91 +30,14 @@
     <h1>Framework extensível para pesquisa em planejamento radioterápico</h1>
     <p class="meta"><strong>Romulo Rocha Santos</strong> (mestrando) · Orientador: <strong>Prof. Dr. Mirko Salomón Alva Sánchez</strong></p>
     <p class="meta">Programa de Pós-Graduação em Tecnologias da Informação e Gestão em Saúde (PPGTIG Saúde) · Universidade Federal de Ciências da Saúde de Porto Alegre (UFCSPA)</p>
-    <nav>
-      <a href="#resumo">Resumo</a><a href="#pergunta">Pergunta e hipóteses</a><a href="#objetivos">Objetivos</a>
-      <a href="#metodo">Método</a><a href="#artigos">Artigos</a><a href="#resultados">Resultados parciais</a>
-      <a href="#cronograma">Cronograma</a><a href="#referencias">Referências</a>
-    </nav>
   </div>
 </header>
 
 <main>
-<h2 id="resumo">Resumo do projeto</h2>
-<p>Softwares de pesquisa em radioterapia são desenvolvidos majoritariamente por grupos acadêmicos e integrados por padrões de intercâmbio e interfaces de fornecedores. Esses projetos evoluíram de forma independente: há ferramentas duplicadas entre instituições, interfaces de programação incompatíveis entre sistemas comerciais e perda de fidelidade até no padrão DICOM-RT.</p>
-<p>Este mestrado investiga como estruturar <strong>dados, capacidades, implementações e experimentos</strong> em um framework computacional extensível e de código aberto, para que métodos científicos heterogêneos possam ser integrados, substituídos e avaliados de forma interoperável e reprodutível.</p>
-<p class="meta">ODS da ONU: 3 Saúde e Bem-Estar (meta 3.4) · 9 Indústria, Inovação e Infraestrutura (meta 9.5).</p>
-
-<h2 id="pergunta">Pergunta de pesquisa e hipóteses</h2>
+<h2 id="problema">Problema de pesquisa</h2>
 <p><em>Como estruturar dados, capacidades, implementações e experimentos em um framework computacional extensível para que métodos científicos heterogêneos possam ser integrados, substituídos e avaliados de maneira interoperável e reprodutível em radioterapia?</em></p>
-<ul>
-  <li><strong>H1.</strong> A documentação de softwares de pesquisa e de planejamento em radioterapia explicita poucas dimensões arquiteturais e pouca substituibilidade de implementações (mediana abaixo de 4 de 8 dimensões; substituição explícita em menos de 30% dos sistemas).</li>
-  <li><strong>H2.</strong> Padrões de intercâmbio além de DICOM/DICOM-RT e contratos de interface versionados são pouco documentados (nenhum padrão além de DICOM em 50% ou mais dos sistemas; contratos versionados em menos de 30%).</li>
-  <li><strong>H3.</strong> Um framework que separa capacidades científicas de suas implementações por contratos versionados e registra a proveniência dos experimentos permite substituir implementações sem alterar os fluxos consumidores e reproduzir grandezas físico-dosimétricas dentro de tolerâncias predefinidas.</li>
-</ul>
 
-<h2 id="objetivos">Objetivos</h2>
-<p><strong>Geral:</strong> desenvolver e avaliar um framework computacional extensível e de código aberto para pesquisa em tecnologias inteligentes aplicadas ao planejamento radioterápico, capaz de representar e integrar dados físico-dosimétricos, algoritmos e ferramentas de análise em ambiente modular e interoperável.</p>
-<ol>
-  <li>Caracterizar o estado da arte em softwares de pesquisa, patentes e bases públicas de dados de radioterapia, avaliando H1 e H2. <span class="tag">concluído</span></li>
-  <li>Definir um modelo de dados interoperável para imagens, estruturas, planos e distribuições de dose.</li>
-  <li>Separar capacidades científicas de suas implementações por contratos de interface versionados.</li>
-  <li>Construir um núcleo modular com mecanismos de extensão e substituição de implementações.</li>
-  <li>Organizar fluxos de trabalho, parâmetros, resultados e proveniência de experimentos.</li>
-  <li>Avaliar o framework quanto a extensibilidade, interoperabilidade, substituibilidade, reprodutibilidade e validade físico-dosimétrica, com dados públicos, testando H3.</li>
-</ol>
-
-<h2 id="metodo">Método</h2>
-<p>Pesquisa aplicada, de abordagem mista, conduzida por <strong>Design Science Research</strong> em cinco fases com ciclos PDCA. A fase I caracteriza o estado da arte por três estudos; as fases seguintes cobrem modelagem de domínio, metamodelo de experimentos, arquitetura de referência (ISO/IEC/IEEE 42010), implementação e avaliação.</p>
-<table>
-  <tr><th>Critério de avaliação</th><th>O que verifica</th></tr>
-  <tr><td>Extensibilidade</td><td>Novas capacidades entram sem alterar o núcleo</td></tr>
-  <tr><td>Substituibilidade</td><td>Trocar uma implementação não altera os fluxos que a consomem</td></tr>
-  <tr><td>Interoperabilidade</td><td>Troca de dados por padrões abertos e contratos versionados</td></tr>
-  <tr><td>Reprodutibilidade</td><td>Experimentos reexecutáveis a partir da proveniência registrada</td></tr>
-  <tr><td>Fidelidade e validade dosimétrica</td><td>Grandezas dentro de tolerâncias predefinidas (referência: AAPM TG-218)</td></tr>
-</table>
-<p class="meta">Ética: o projeto não envolve participantes humanos e usa apenas dados públicos; dispensa de CEP conforme Res. CNS 510/2016, com registro na COMPESQ. Um eventual questionário futuro será submetido ao CEP.</p>
-
-<h2 id="artigos">Artigos do mestrado</h2>
-<h3>Paper 1a · Revisão de escopo de softwares de pesquisa em radioterapia</h3>
-<p>Revisão de escopo relatada segundo o PRISMA-ScR, com codificação auditável de oito dimensões arquiteturais nos sistemas incluídos. <span class="tag">em redação</span></p>
-<h3>Paper 1b · Revisão patentométrica</h3>
-<p>Panorama de patentes de software de planejamento radioterápico, relatado segundo o RIPL (diretrizes da OMPI), com as mesmas oito dimensões aplicadas às famílias de patentes. <span class="tag">em redação</span></p>
-<h3>Paper 1c · Bases públicas de dados</h3>
-<p>Caracterização de datasets públicos de radioterapia, com escala de adequação de 1 a 5. <span class="tag">planejado</span></p>
-<p class="meta">Os textos serão disponibilizados aqui em acesso aberto (preprint ou versão publicada) quando forem submetidos.</p>
-
-<h2 id="resultados">Resultados parciais (fase I)</h2>
-<div class="stats">
-  <div class="card">
-    <p><strong>Literatura científica (1a)</strong></p>
-    <p><span class="big">29.922 → 82</span><br>registros identificados → relatos incluídos</p>
-    <p>54 sistemas de pesquisa em radioterapia</p>
-    <p>Mediana de <strong>3 de 8</strong> dimensões documentadas</p>
-    <p>Substituição de implementações: <strong>22,2%</strong></p>
-    <p>Contrato de interface versionado: <strong>nenhum</strong></p>
-  </div>
-  <div class="card">
-    <p><strong>Patentes (1b)</strong></p>
-    <p><span class="big">1.306 → 1.135</span><br>documentos → famílias de patentes</p>
-    <p>141 famílias de software</p>
-    <p>Mediana de <strong>1 de 8</strong> dimensões documentadas</p>
-    <p>Substituição de implementações: <strong>1,4%</strong></p>
-    <p>Contrato de interface versionado: <strong>nenhum</strong></p>
-  </div>
-</div>
-<p>Em ambas as fontes, todos os indicadores de H1 e H2 ficaram abaixo dos limiares predefinidos: a lacuna arquitetural que motiva o framework está documentada.</p>
-
-<h2 id="cronograma">Produtos esperados e cronograma</h2>
-<ul>
-  <li>Arquitetura de referência documentada</li>
-  <li>Framework aberto com contratos versionados</li>
-  <li>Experimentos reprodutíveis</li>
-  <li>Validação físico-dosimétrica com dados públicos</li>
-</ul>
-<p>Execução de ago/2026 a mar/2028 (defesa). Próximo passo, dez/2026: ampliação das buscas em Scopus e Web of Science, dupla triagem com kappa e registro do protocolo na OSF.</p>
-
-<h2 id="referencias">Referências principais</h2>
+<h2 id="referencias">Referências bibliográficas</h2>
 <ol class="refs">
   <li>INGRAM, S. et al. Resource sharing and open-source software in radiation oncology: from challenges to opportunities for community-wide benefit. <em>Radiotherapy and Oncology</em>, v. 220, 111587, 2026. <a href="https://doi.org/10.1016/j.radonc.2026.111587">doi:10.1016/j.radonc.2026.111587</a></li>
   <li>DEASY, J. O.; BLANCO, A. I.; CLARK, V. H. CERR: a computational environment for radiotherapy research. <em>Medical Physics</em>, v. 30, p. 979-985, 2003. <a href="https://doi.org/10.1118/1.1568978">doi:10.1118/1.1568978</a></li>
@@ -142,7 +55,7 @@
 
 <footer>
   Documentação do projeto de mestrado · PPGTIG Saúde, UFCSPA · Atualizado em novembro de 2026 ·
-  Contato: <a href="mailto:romulo.santos@ufcspa.edu.br">romulo.santos@ufcspa.edu.br</a> · <a href="https://github.com/romulors/mestrado_ufcspa">Repositório</a>
+  <a href="https://github.com/romulors/mestrado_ufcspa">Repositório</a>
 </footer>
 </body>
 </html>
